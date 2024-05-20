@@ -12,17 +12,45 @@ import java.time.format.DateTimeFormatter;
 		
 		
 		public Event (String Title, LocalDateTime Data, int totSeats) {
-			
+			assert Data.isAfter(LocalDateTime.now()) : "This time is past due";
 			this.Title = Title;
 			this.Data = Data;
 			this.totSeats = totSeats;
-			assert this.Data.isAfter(LocalDateTime.now()) : "This time is past due";
 			
+			}
+		
+		public String getTitle() {
+			return this.Title;
+		}
+	
+		public void setTitle(String Title) {
+			this.Title = Title;
+		
+		}
+		
+		public LocalDateTime getData() {
+			return this.Data;
 			
+			}
+		public void setData(LocalDateTime Data) {
+			this.Data = Data;
+		}
+		
+		public int getTotSeats() {
+			return this.totSeats;
+		}
+		
+		public int getBookedSeats() {
+			return this.bookedSeats;
+		}
 	}
 	
 	
 	
 	
-	}
+	
+	
+	
+	
+	
 	
