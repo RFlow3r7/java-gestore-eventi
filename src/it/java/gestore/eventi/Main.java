@@ -23,21 +23,21 @@ public class Main {
         // Creazione dell'oggetto Eventi
         Eventi evento = new Eventi(titolo, data, numeroPostiTotale);
 
-        // Chiedere all'utente quante prenotazioni vuole fare
+        // Chiedi all'utente quante prenotazioni vuole fare
         System.out.println("Quante prenotazioni vuoi fare?");
         int numeroPrenotazioni = scanner.nextInt();
 
-        // Effettuazione delle prenotazioni
+        // Effettua delle prenotazioni
         for (int i = 0; i < numeroPrenotazioni; i++) {
             String risultatoPrenotazione = evento.prenota();
             System.out.println(risultatoPrenotazione);
         }
 
-        // Chiedere all'utente quante disdette vuole fare
+        // Chiedi all'utente quante disdette vuole fare
         System.out.println("Quante disdette vuoi fare?");
         int numeroDisdette = scanner.nextInt();
 
-        // Effettuazione delle disdette
+        // Effettua delle disdette
         for (int i = 0; i < numeroDisdette; i++) {
             String risultatoDisdetta = evento.disdici();
             System.out.println(risultatoDisdetta);
@@ -47,7 +47,7 @@ public class Main {
         System.out.println("Evento prenotato:");
         System.out.println(evento);
         
-     // Chiedere all'utente se l'evento è un concerto
+     // Chiedi all'utente se l'evento è un concerto
         System.out.println("L'evento è un concerto? (si/no):");
         scanner.nextLine(); // Consuma il newline pendente
         String risposta = scanner.nextLine();
