@@ -1,4 +1,5 @@
 package it.java.gestore.eventi;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -14,8 +15,6 @@ public class Main {
 
         System.out.println("Inserisci la data dell'evento (formato: dd-MM-yyyy):");
         LocalDate data = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        
-        System.out.println("Data: " + data);
 
         System.out.println("Inserisci il numero totale di posti disponibili:");
         int numeroPostiTotale = scanner.nextInt();
@@ -38,16 +37,14 @@ public class Main {
         int numeroDisdette = scanner.nextInt();
 
         // Effettua delle disdette
-        for (int i = 0; i < numeroDisdette; i++) {
-            String risultatoDisdetta = evento.disdici();
-            System.out.println(risultatoDisdetta);
-        }
+        String risultatoDisdetta = evento.disdici(numeroDisdette);
+        System.out.println(risultatoDisdetta);
 
         // Stampare l'evento prenotato
         System.out.println("Evento prenotato:");
         System.out.println(evento);
-        
-     // Chiedi all'utente se l'evento è un concerto
+
+        // Chiedi all'utente se l'evento è un concerto
         System.out.println("L'evento è un concerto? (si/no):");
         scanner.nextLine(); // Consuma il newline pendente
         String risposta = scanner.nextLine();
@@ -61,10 +58,18 @@ public class Main {
 
             Concerto concerto = new Concerto(titolo, data, numeroPostiTotale, ora, prezzo);
 
+            // Effettua le stesse prenotazioni e disdette sull'oggetto Concerto
+            for (int i = 0; i < numeroPrenotazioni; i++) {
+                concerto.prenota();
+            }
+            concerto.disdici(numeroDisdette);
+
             // Stampare l'evento prenotato come concerto
-            System.out.println("il tuo evento prenotato è un Concerto :");
+            System.out.println("Il tuo evento prenotato è un Concerto:");
             System.out.println(concerto);
         }
-      
+
+        // Chiudere lo scanner
+        scanner.close();
     }
 }
